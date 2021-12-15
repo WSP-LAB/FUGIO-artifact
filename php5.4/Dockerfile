@@ -58,7 +58,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 RUN sed -ri -e "s/^upload_max_filesize.*/upload_max_filesize = 10M/" /usr/local/lib/php.ini
 RUN sed -ri -e "s/^post_max_size.*/post_max_size = 10M/" /usr/local/lib/php.ini
 RUN sed -i "s/display_errors = Off/display_errors = On/g" /usr/local/lib/php.ini
-RUN sed -i "s/;phar.readonly = On/phar.readonly = Off/g" /usr/local/lib/php.ini
 RUN sed -i "s/memory_limit = 128M/memory_limit = -1/g" /usr/local/lib/php.ini
 
 RUN mkdir -p /var/run/mysqld                                                                 

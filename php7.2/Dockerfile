@@ -26,8 +26,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 RUN sed -ri -e "s/^upload_max_filesize.*/upload_max_filesize = 10M/" /etc/php/7.2/apache2/php.ini
 RUN sed -ri -e "s/^post_max_size.*/post_max_size = 10M/" /etc/php/7.2/apache2/php.ini
 RUN sed -i "s/display_errors = Off/display_errors = On/g" /etc/php/7.2/apache2/php.ini
-RUN sed -i "s/disable_functions/; disable_functions/g" /etc/php/7.2/apache2/php.ini
-RUN sed -i "s/;phar.readonly = On/phar.readonly = Off/g" /etc/php/7.2/cli/php.ini
 RUN sed -i "s/memory_limit = 128M/memory_limit = -1/g" /etc/php/7.2/cli/php.ini
 
 RUN mkdir -p /var/run/mysqld
