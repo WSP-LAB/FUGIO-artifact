@@ -1,8 +1,8 @@
 # FUGIO-artifact
 [FUGIO](https://github.com/WSL-LAB/FUGIO) is the first 
 automatic exploit generation (AEG) tool for PHP object injection (POI) vulnerabilities.
-This repository includes Docker images to run the experiments performed in the paper.
-We tested our Docker images and running scripts on Ubuntu 18.04 host machine.
+The artifact includes Docker images to run the experiments performed in the paper.
+We tested our Docker images and scripts on a Ubuntu 18.04 machine.
 
 ## Prepare Docker containers
 #### 1. Install Docker
@@ -87,12 +87,14 @@ cd /FUGIO
 If you want to stop monitoring, run `htaccess.py off`.
 
 #### 2. Prepare two terminals
-We need at least two Docker container terminals. One is for running FUGIO and the other is for triggering POI vulnerabilities.
+We need at least two Docker container terminals. 
+One is for running FUGIO and the other is for triggering POI vulnerabilities.
 You can connect two shells by running `3_docker_exec.sh` in two terminals respectively.
 
 
 #### 3. Run FUGIO
-In the first terminal, run FUGIO using `run_FUGIO_XX.sh` with the target applications path (i.e. `/app/[target application]`).
+In the first terminal, run FUGIO using `run_FUGIO_XX.sh` with the target applications path 
+(i.e. `/app/[target application]`).
 In the other terminal, trigger the corresponding POI vulnerability using the given scripts.
 
 I recommend the following applications for obtaining results fastly.
@@ -133,7 +135,7 @@ Also, the size of each Docker container can be over 20 GB after running FUGIO.
 If you run the command, FUGIO starts to analyze the source code of the target application.
 At the first run, FUGIO generates a dump file in `Files/dump_files`.
 It is for reducing time to analyze the target source code when you run FUGIO again for the same application.
-If the source code of the target application changed, you need to delete its dump file and run the script again.
+If the source code of the target application is changed, you need to delete its dump file and run the script again.
 
 > When you run FUGIO on Smarty (PHP 5.4),
 > 
@@ -171,7 +173,7 @@ If the source code of the target application changed, you need to delete its dum
 #### 3-2. Trigger POI vulnerabilities in the second terminal
 After FUGIO finishes analyzing the source code, FUGIO starts to monitor a POI vulnerability.
 We can trigger POI vulnerabilities using crawlers, spiders, or manual browsing.
-In this artifact, we provide scripts for triggering each POI vulnerability.
+In the artifact, we provide scripts for triggering each POI vulnerability.
 
 - PHP 5.4:
     - Contao CMS, Piwik, GLPI, Joomla, CubeCart, CMS Made Simple, Open Web Analytics, Vanilla Forums:
@@ -287,9 +289,10 @@ All outputs are generated in the `Files/fuzzing/[app_path.time]/PUT/` directory.
 
 
 #### 4. Reproduce evaluations in the paper
-This artifact provides environments for reproducing evaluations in Sections 7.2 and 7.3 producing Tables 1, 2, and 3 in the paper.
+The artifact provides environments for reproducing evaluations in Sections 7.2 and 7.3
+producing Tables 1, 2, and 3 in the paper.
 
-1. For reproducing Table 1, run `./config.py org` in php5.4. php5.6, and `php7.2` Docker containers
+1. For reproducing Table 1, run `./config.py org` in `php5.4`, `php5.6`, and `php7.2` Docker containers
 before following the step 3 ["Run FUGIO"](https://github.com/WSP-LAB/FUGIO-artifact#3-run-fugio).
     ```
     cd /FUGIO
@@ -304,7 +307,7 @@ before following the step 3 ["Run FUGIO"](https://github.com/WSP-LAB/FUGIO-artif
     - php 7.2: `./run_FUGIO_72.sh`
     
     The number of true positive chains in Table 1 is manually analyzed. 
-    We provide an utility for helping the analysis of the generated POP chains 
+    We provide a utility for helping the analysis of the generated POP chains 
     in the step 5 ["Analyzing the results"](https://github.com/WSP-LAB/FUGIO-artifact#5-analyzing-the-results).
 
 2. For reproducing Table 2, run `./config.py ccs` in `php5.4` Docker container
@@ -322,7 +325,7 @@ before following the step 3 ["Run FUGIO"](https://github.com/WSP-LAB/FUGIO-artif
     Since Dahse et al. did not provide the details of each chain, we could not match each exploitable chain. 
     Thus, we compared the numbers of exploit objects that FUGIO reported with the numbers reported in their paper.
 
-3. For reproducing Table 3, run `./config.py phpggc` in `php5.4`, `php5.6` and `php7.2` Docker containers,
+3. For reproducing Table 3, run `./config.py phpggc` in `php5.4`, `php5.6`, and `php7.2` Docker containers,
 before following the step 3 ["Run FUGIO"](https://github.com/WSP-LAB/FUGIO-artifact#3-run-fugio).
     ```
     cd /FUGIO
@@ -338,8 +341,9 @@ before following the step 3 ["Run FUGIO"](https://github.com/WSP-LAB/FUGIO-artif
     
     [PHPGGC](https://github.com/ambionics/phpggc) provides templates for generating POP exploits. 
     However, it is not clear that what POP gadget each POP chain consists of. 
-    Thus, we provide POP chains from PHPGGC in the repo (https://github.com/WSP-LAB/FUGIO/tree/main/PHPGGC) by analyzing each template. 
-    `chain_analyzer` in ["Run FUGIO"](https://github.com/WSP-LAB/FUGIO-artifact#5-analyzing-the-results) 
+    Thus, we provide POP chains from PHPGGC in the repo (https://github.com/WSP-LAB/FUGIO/tree/main/PHPGGC) 
+    by analyzing each template. 
+    `chain_analyzer` in ["Analyzing the results"](https://github.com/WSP-LAB/FUGIO-artifact#5-analyzing-the-results) 
     also will be helpful for analyzing the reported POP chains.
 
 #### 5. Analyzing the results
