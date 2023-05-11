@@ -1,5 +1,5 @@
 # FUGIO-artifact
-[FUGIO](https://github.com/WSL-LAB/FUGIO) is the first 
+[FUGIO](https://github.com/WSP-LAB/FUGIO) is the first 
 automatic exploit generation (AEG) tool for PHP object injection (POI) vulnerabilities.
 The artifact includes Docker images to run the experiments performed in the paper.
 We tested our Docker images and scripts on a Ubuntu 18.04 machine.
